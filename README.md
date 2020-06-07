@@ -50,7 +50,7 @@ On Android, AES encryption is used. AES secret key is encrypted with RSA and RSA
 On iOS, [Keychain](https://developer.apple.com/documentation/security/keychain_services#//apple_ref/doc/uid/TP30000897-CH203-TP1) is used.
 
 ### Built With
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
 * [Flutter](https://flutter.dev/)
 
 For PGP, a high level OpenPGP library is used - [gopenpgp](https://github.com/ProtonMail/gopenpgp) which is compiled with [gomobile](https://godoc.org/golang.org/x/mobile/cmd/gomobile) for mobile support.
