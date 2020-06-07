@@ -39,7 +39,10 @@
 
 ## About YAP!
 
-<img src="gifs/screenshot.png" alt="YAP!" width="400"/>
+<img src="gifs/screenshot.png" alt="YAP!" width="220"/>
+<img src="gifs/screenshot_light.png" alt="YAP!" width="220"/>
+<img src="gifs/screenshot_settings.png" alt="YAP!" width="220"/>
+<img src="gifs/screenshot_light_keys.png" alt="YAP!" width="220"/>
 
 // TODO
 
