@@ -7,16 +7,16 @@
 
 <br />
 <p align="center">
-  <h3 align="center">YUP!</h3>
+  <h3 align="center">YAP!</h3>
 
   <p align="center">
     Yet Another PGP Tool!
     <br />
-    <a href="https://github.com/MarinX/yup/releases">Download Release</a>
+    <a href="https://github.com/MarinX/yap/releases">Download Release</a>
     ·
-    <a href="https://github.com/MarinX/yup/issues">Report Bug</a>
+    <a href="https://github.com/MarinX/yap/issues">Report Bug</a>
     ·
-    <a href="https://github.com/MarinX/yup/issues">Request Feature</a>
+    <a href="https://github.com/MarinX/yap/issues">Request Feature</a>
   </p>
 </p>
 
@@ -24,7 +24,7 @@
 
 ## Table of Contents
 
-* [About YUP!](#about-the-project)
+* [About YAP!](#about-the-project)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
@@ -37,9 +37,9 @@
 * [Contact](#contact)
 
 
-## About YUP!
+## About YAP!
 
-<img src="gifs/screenshot.png" alt="YUP!" width="400"/>
+<img src="gifs/screenshot.png" alt="YAP!" width="400"/>
 
 // TODO
 
@@ -60,7 +60,7 @@ For PGP, a high level OpenPGP library is used - [gopenpgp](https://github.com/Pr
 
 If you want to compile and build locally, check the `prerequisites` and `building` sections.
 
-Alternative, you can view the [release](https://github.com/MarinX/yup/releases) section of the project and download APK.
+Alternative, you can view the [release](https://github.com/MarinX/yap/releases) section of the project and download APK.
 
 For iOS users, Apple does not allow installing an app outside their eco-system(store), so you will need to compile and build (***not yet supported***)
 
@@ -92,7 +92,7 @@ flutter pub get
 
 ***Recommended***
 
-* Use [release](https://github.com/MarinX/yup/releases) section to download and install
+* Use [release](https://github.com/MarinX/yap/releases) section to download and install
 
 ***Other***
 * If you have phone connected and want to install 
@@ -148,17 +148,17 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Marin Basic - [@marin02basic](https://twitter.com/marin02basic) - marin.basic02@gmail.com
 
-Project Link: [https://github.com/MarinX/yup](https://github.com/MarinX/yup)
+Project Link: [https://github.com/MarinX/yap](https://github.com/MarinX/yap)
 
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/MarinX/yup.svg?style=flat-square
-[contributors-url]: https://github.com/MarinX/yup/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/MarinX/yup.svg?style=flat-square
-[forks-url]: https://github.com/MarinX/yup/network/members
-[stars-shield]: https://img.shields.io/github/stars/MarinX/yup.svg?style=flat-square
-[stars-url]: https://github.com/MarinX/yup/stargazers
-[issues-shield]: https://img.shields.io/github/issues/MarinX/yup.svg?style=flat-square
-[issues-url]: https://github.com/MarinX/yup/issues
-[license-shield]: https://img.shields.io/github/license/MarinX/yup.svg?style=flat-square
-[license-url]: https://github.com/MarinX/yup/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/MarinX/yap.svg?style=flat-square
+[contributors-url]: https://github.com/MarinX/yap/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/MarinX/yap.svg?style=flat-square
+[forks-url]: https://github.com/MarinX/yap/network/members
+[stars-shield]: https://img.shields.io/github/stars/MarinX/yap.svg?style=flat-square
+[stars-url]: https://github.com/MarinX/yap/stargazers
+[issues-shield]: https://img.shields.io/github/issues/MarinX/yap.svg?style=flat-square
+[issues-url]: https://github.com/MarinX/yap/issues
+[license-shield]: https://img.shields.io/github/license/MarinX/yap.svg?style=flat-square
+[license-url]: https://github.com/MarinX/yap/blob/master/LICENSE
