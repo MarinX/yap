@@ -124,6 +124,10 @@ flutter run --release
 
 ![](./gifs/decrypt.gif)
 
+### Verifying signature
+
+![](./gifs/verify_sig.gif)
+
 ### Settings
 
 ![](./gifs/settings.gif)
