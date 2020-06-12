@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:yapgp/models/pgp.dart';
+import 'package:yapgp/models/signature.dart';
 
 class PGPService {
 
@@ -34,6 +35,12 @@ class PGPService {
   Future<PGP> import(String privateKey, String password) async {
     String result = await ch.invokeMethod("Import", {"privKey": privateKey, "passphrase": password});
     PGP ret = PGP.fromJson(jsonDecode(result));
+    return ret;
+  }
+
+  Future<Signature> verify(String pubKey, String message) async {
+    String result = await ch.invokeMethod("Verify", {"pubKey": pubKey, "message": message});
+    Signature ret = Signature.fromJson(jsonDecode(result));
     return ret;
   }
 }

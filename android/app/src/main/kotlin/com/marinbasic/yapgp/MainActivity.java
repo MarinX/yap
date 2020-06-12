@@ -104,7 +104,7 @@ public class MainActivity extends FlutterActivity {
                                     }
                                     try {
                                         privateKey = Crypto.newKeyFromArmored(call.argument("privKey"));
-                                        if(privateKey.isLocked() && password.isEmpty()) {
+                                        if(privateKey.isLocked() || password.isEmpty()) {
                                             resultJSON.put("error", "Private key locked with password");
                                             return resultJSON;
                                         }
@@ -126,6 +126,22 @@ public class MainActivity extends FlutterActivity {
                                         resultJSON.put("error", "Invalid PGP private key or password");
                                         return resultJSON;
                                     }
+                                case "Verify":
+                                    try {
+                                        String msg = Helper.verifyCleartextMessageArmored(
+                                                call.argument("pubKey"),
+                                                call.argument("message"),
+                                                Crypto.getUnixTime()
+                                        );
+                                        Long time = Helper.createdCleartextMessageArmored(call.argument("message"));
+                                        resultJSON.put("msg", msg);
+                                        resultJSON.put("time", time);
+                                    }catch (Exception e) {
+                                        resultJSON.put("error", "Contact key does not match PGP signed message");
+                                        return resultJSON;
+                                    }
+
+                                    return resultJSON;
                             }
                         } catch (Exception e) {
                             resultJSON.put("exception", e.getMessage());

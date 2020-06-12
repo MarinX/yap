@@ -5,6 +5,7 @@ import 'package:yapgp/models/store.dart';
 import 'package:yapgp/services/utils_service.dart';
 import 'package:yapgp/views/add_contact.dart';
 import 'package:yapgp/views/encrypt.dart';
+import 'package:yapgp/views/verify_sign.dart';
 
 class Contacts extends StatefulWidget {
   @override
@@ -77,6 +78,15 @@ class ContactsState extends State<Contacts> {
                   );
                 },
                 icon: Icon(Icons.message),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => VerifySignature(contact)),
+                  );
+                },
+                icon: Icon(Icons.verified_user),
               ),
               IconButton(
                 color: Colors.redAccent,

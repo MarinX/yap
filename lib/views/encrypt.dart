@@ -82,6 +82,9 @@ class EncryptState extends State<Encrypt> {
                   });
 
                 }).catchError((e){
+                  setState(() {
+                    isLoading = false;
+                  });
                   _utils.showSnackbar(builderContext, e.message);
                 });
               }
