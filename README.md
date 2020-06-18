@@ -3,7 +3,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-
+[![Join the chat at https://gitter.im/yap_app/community](https://badges.gitter.im/yap_app/community.svg)](https://gitter.im/yap_app/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 <br />
 <p align="center">
@@ -23,8 +23,6 @@
 
 
 ## Table of Contents
-
-[![Join the chat at https://gitter.im/yap_app/community](https://badges.gitter.im/yap_app/community.svg)](https://gitter.im/yap_app/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 * [About YAP!](#about-the-project)
   * [Built With](#built-with)
