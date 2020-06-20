@@ -12,7 +12,7 @@
   <p align="center">
     Yet Another PGP Tool!
     <br />
-    <a href="https://github.com/MarinX/yap/releases">Download Release</a>
+    <a href="https://github.com/MarinX/yap/releases">Github Release</a>
     ·
     <a href="https://github.com/MarinX/yap/issues">Report Bug</a>
     ·
@@ -20,6 +20,7 @@
   </p>
 </p>
 
+<a href='https://play.google.com/store/apps/details?id=com.marinbasic.yapgp&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' width="220" src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
 
 ## Table of Contents
