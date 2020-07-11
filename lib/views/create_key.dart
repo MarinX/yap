@@ -57,7 +57,6 @@ class CreateKeyState extends State<CreateKey> {
                 setState(() {
                   isLoading = true;
                 });
-
                 String name = _fbKey.currentState.value["name"].toString();
                 String email = _fbKey.currentState.value["email"].toString();
                 String password = _fbKey.currentState.value["password"].toString();
@@ -121,6 +120,23 @@ class CreateKeyState extends State<CreateKey> {
                         decoration: InputDecoration(labelText: "Password"),
                         validators: [
                           FormBuilderValidators.required(),
+                        ],
+                      ),
+                      FormBuilderTextField(
+                        attribute: "password_confirm",
+                        maxLines: 1,
+                        readOnly: isLoading,
+                        obscureText: true,
+                        decoration: InputDecoration(labelText: "Confirm password"),
+                        validators: [
+                          FormBuilderValidators.required(),
+                          (val) {
+                            String password = _fbKey.currentState.value["password"].toString();
+                            if(val != password) {
+                              return "Passwords does not match";
+                            }
+                            return null;
+                          }
                         ],
                       ),
                       Padding(

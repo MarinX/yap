@@ -129,6 +129,10 @@ flutter run --release
 
 ![](./gifs/verify_sig.gif)
 
+### Creating signature
+
+![](./gifs/creating_signature.gif)
+
 ### Settings
 
 ![](./gifs/settings.gif)

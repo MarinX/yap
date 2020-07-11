@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:yapgp/models/pgp.dart';
 import 'package:yapgp/models/store.dart';
 import 'package:yapgp/services/utils_service.dart';
+import 'package:yapgp/views/create_sign.dart';
 import 'package:yapgp/views/export_key.dart';
 
 import 'create_key.dart';
@@ -78,6 +79,15 @@ class KeysState extends State<Keys> {
                   );
                 },
                 icon: Icon(Icons.import_export),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CreateSignature(key)),
+                  );
+                },
+                icon: Icon(Icons.assignment),
               ),
               IconButton(
                 color: Colors.redAccent,
