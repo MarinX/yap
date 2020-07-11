@@ -142,6 +142,22 @@ public class MainActivity extends FlutterActivity {
                                     }
 
                                     return resultJSON;
+                                case "Signature":
+                                    try {
+
+                                        String msg = Helper.signCleartextMessageArmored(
+                                                call.argument("privKey"),
+                                                call.argument("passphrase").toString().getBytes(),
+                                                call.argument("message")
+                                                );
+                                        resultJSON.put("msg", msg);
+                                        resultJSON.put("time", Crypto.getUnixTime());
+
+                                    }catch (Exception e) {
+                                        resultJSON.put("error", "Cannot create signature");
+                                        return resultJSON;
+                                    }
+                                    return resultJSON;
                             }
                         } catch (Exception e) {
                             resultJSON.put("exception", e.getMessage());

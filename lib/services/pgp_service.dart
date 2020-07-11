@@ -43,4 +43,10 @@ class PGPService {
     Signature ret = Signature.fromJson(jsonDecode(result));
     return ret;
   }
+
+  Future<Signature> signature(String privKey, String password, String message) async {
+    String result = await ch.invokeMethod("Signature", {"privKey": privKey, "passphrase": password, "message": message});
+    Signature ret = Signature.fromJson(jsonDecode(result));
+    return ret;
+  }
 }
