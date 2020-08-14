@@ -128,6 +128,7 @@ class EncryptState extends State<Encrypt> {
                         attribute: "message",
                         readOnly: isLoading,
                         minLines: 1,
+                        maxLines: null,
                         controller: _controller,
                         maxLengthEnforced: false,
                         autocorrect: false,

@@ -112,6 +112,7 @@ class DecryptState extends State<Decrypt> {
                         attribute: "message",
                         readOnly: isLoading,
                         minLines: 1,
+                        maxLines: null,
                         controller: _controller,
                         maxLengthEnforced: false,
                         autocorrect: false,

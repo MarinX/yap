@@ -2,7 +2,7 @@ import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:yapgp/models/pgp.dart';
-import 'package:yapgp/models/signature.dart';
+import 'package:yapgp/models/signature.dart' as PGPSig;
 import 'package:yapgp/services/pgp_service.dart';
 import 'package:yapgp/services/utils_service.dart';
 
@@ -62,7 +62,7 @@ class CreateSignatureState extends State<CreateSignature> {
                       .currentState.value["message"]
                       .toString();
 
-                  _service.signature(_key.privateKey,_key.passphrase, message).then((Signature value) {
+                  _service.signature(_key.privateKey,_key.passphrase, message).then((PGPSig.Signature value) {
                     setState(() {
                       isLoading = false;
                       _controller.text = value.message;
@@ -104,6 +104,7 @@ class CreateSignatureState extends State<CreateSignature> {
                           attribute: "message",
                           readOnly: isLoading,
                           minLines: 1,
+                          maxLines: null,
                           controller: _controller,
                           maxLengthEnforced: false,
                           autocorrect: false,

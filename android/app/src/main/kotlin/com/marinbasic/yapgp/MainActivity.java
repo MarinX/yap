@@ -104,7 +104,7 @@ public class MainActivity extends FlutterActivity {
                                     }
                                     try {
                                         privateKey = Crypto.newKeyFromArmored(call.argument("privKey"));
-                                        if(privateKey.isLocked() || password.isEmpty()) {
+                                        if(privateKey.isLocked() && password.isEmpty()) {
                                             resultJSON.put("error", "Private key locked with password");
                                             return resultJSON;
                                         }

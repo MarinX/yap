@@ -26,26 +26,26 @@ class PGPService {
   }
 
   Future<PGP> identity(String pubKey) async {
-    String result = await ch.invokeMethod("Identity", {"pubKey": pubKey});
+    String result = await ch.invokeMethod("Identity", {"pubKey": pubKey.trim()});
     PGP ret = PGP.fromJson(jsonDecode(result));
     ret.publicKey = pubKey;
     return ret;
   }
 
   Future<PGP> import(String privateKey, String password) async {
-    String result = await ch.invokeMethod("Import", {"privKey": privateKey, "passphrase": password});
+    String result = await ch.invokeMethod("Import", {"privKey": privateKey.trim(), "passphrase": password});
     PGP ret = PGP.fromJson(jsonDecode(result));
     return ret;
   }
 
   Future<Signature> verify(String pubKey, String message) async {
-    String result = await ch.invokeMethod("Verify", {"pubKey": pubKey, "message": message});
+    String result = await ch.invokeMethod("Verify", {"pubKey": pubKey.trim(), "message": message});
     Signature ret = Signature.fromJson(jsonDecode(result));
     return ret;
   }
 
   Future<Signature> signature(String privKey, String password, String message) async {
-    String result = await ch.invokeMethod("Signature", {"privKey": privKey, "passphrase": password, "message": message});
+    String result = await ch.invokeMethod("Signature", {"privKey": privKey.trim(), "passphrase": password, "message": message});
     Signature ret = Signature.fromJson(jsonDecode(result));
     return ret;
   }

@@ -107,6 +107,7 @@ class ImportKeyState extends State<ImportKey> {
                       attribute: "private_key",
                       readOnly: isLoading,
                       minLines: 1,
+                      maxLines: null,
                       maxLengthEnforced: false,
                       autocorrect: false,
                       decoration: InputDecoration(

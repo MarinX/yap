@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:yapgp/models/pgp.dart';
-import 'package:yapgp/models/signature.dart';
+import 'package:yapgp/models/signature.dart' as PGPSig;
 import 'package:yapgp/services/pgp_service.dart';
 import 'package:yapgp/services/utils_service.dart';
 
@@ -24,7 +24,7 @@ class VerifySignatureState extends State<VerifySignature> {
   final PGPService _service =  PGPService();
   bool isLoading = false;
   PGP _key;
-  Signature sig;
+  PGPSig.Signature sig;
 
   @override
   void initState() {
@@ -64,7 +64,7 @@ class VerifySignatureState extends State<VerifySignature> {
                       .currentState.value["message"]
                       .toString();
 
-                  _service.verify(_key.publicKey, message).then((Signature value) {
+                  _service.verify(_key.publicKey, message).then((PGPSig.Signature value) {
                     setState(() {
                       isLoading = false;
                       sig = value;
@@ -132,6 +132,7 @@ class VerifySignatureState extends State<VerifySignature> {
                           attribute: "message",
                           readOnly: isLoading,
                           minLines: 1,
+                          maxLines: null,
                           controller: _controller,
                           maxLengthEnforced: false,
                           autocorrect: false,

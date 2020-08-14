@@ -96,6 +96,7 @@ class ExportKeyState extends State<ExportKey> {
                       attribute: "private_key",
                       readOnly: true,
                       minLines: 1,
+                      maxLines: null,
                       maxLengthEnforced: false,
                       autocorrect: false,
                       decoration: InputDecoration(
