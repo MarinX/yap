@@ -75,7 +75,7 @@ class EncryptState extends State<Encrypt> {
                     .toString();
                 PGP mykey  = _keys.where((element) => element.privateKey == privKey).first;
 
-                _service.encrypt(message, mykey).then((value) {
+                _service.encrypt(message, mykey, contact).then((value) {
                   setState(() {
                     isLoading = false;
                     _controller.text = value;

@@ -13,8 +13,8 @@ class PGPService {
     return PGP.fromJson(jsonDecode(result));
   }
 
-  Future<String> encrypt(String msg, PGP key) async {
-    String result = await ch.invokeMethod("Encrypt", {"pubKey": key.publicKey, "message": msg});
+  Future<String> encrypt(String msg, PGP key, PGP contact) async {
+    String result = await ch.invokeMethod("Encrypt", {"pubKey": contact.publicKey,"privKey": key.privateKey,"passphrase": key.passphrase, "message": msg});
     var json = jsonDecode(result);
     return json["message"];
   }

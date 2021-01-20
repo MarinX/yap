@@ -1,20 +1,19 @@
 package com.marinbasic.yapgp;
 
 import androidx.annotation.NonNull;
-import com.google.android.gms.tasks.Tasks;
-import com.proton.gopenpgp.crypto.Crypto;
-import com.proton.gopenpgp.crypto.Identity;
-import com.proton.gopenpgp.crypto.Key;
-import com.proton.gopenpgp.helper.Helper;
 
-import org.json.JSONException;
+import com.google.android.gms.tasks.Tasks;
+
+
 import org.json.JSONObject;
 
-
 import java.util.concurrent.Callable;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import crypto.Crypto;
+import crypto.Key;
+import crypto.UserInfo;
+import helper.Helper;
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodChannel;
@@ -55,9 +54,11 @@ public class MainActivity extends FlutterActivity {
 
                                     return resultJSON;
                                 case "Encrypt":
-                                    String pgpMessage = Helper.encryptMessageArmored(
-                                            call.argument("pubKey"),
-                                            call.argument("message")
+                                    String pgpMessage = Helper.encryptSignMessageArmored(
+                                            call.argument("pubKey").toString(),
+                                            call.argument("privKey").toString(),
+                                            call.argument("passphrase").toString().getBytes(),
+                                            call.argument("message").toString()
                                     );
 
                                     resultJSON.put("message", pgpMessage);
@@ -80,10 +81,10 @@ public class MainActivity extends FlutterActivity {
                                     return resultJSON;
                                 case "Identity":
                                     Key pubKey;
-                                    Identity id;
+                                    UserInfo id;
                                     try{
                                         pubKey = Crypto.newKeyFromArmored(call.argument("pubKey"));
-                                        id = pubKey.identity();
+                                        id = pubKey.primaryIdentity();
                                     }catch (Exception e) {
                                         resultJSON.put("error", "Invalid PGP public key");
                                         return resultJSON;
@@ -97,13 +98,14 @@ public class MainActivity extends FlutterActivity {
                                     return resultJSON;
                                 case "Import":
                                     Key privateKey;
-                                    Identity identity;
+                                    UserInfo identity;
                                     String password = call.argument("passphrase");
                                     if(password == null) {
                                         password = "";
                                     }
                                     try {
                                         privateKey = Crypto.newKeyFromArmored(call.argument("privKey"));
+
                                         if(privateKey.isLocked() && password.isEmpty()) {
                                             resultJSON.put("error", "Private key locked with password");
                                             return resultJSON;
@@ -113,7 +115,7 @@ public class MainActivity extends FlutterActivity {
                                             resultJSON.put("error", "Invalid password");
                                             return resultJSON;
                                         }
-                                        identity = privateKey.identity();
+                                        identity = privateKey.primaryIdentity();
 
                                         resultJSON.put("publicKey", privateKey.getArmoredPublicKey());
                                         resultJSON.put("privateKey", privateKey.armor());
@@ -133,9 +135,7 @@ public class MainActivity extends FlutterActivity {
                                                 call.argument("message"),
                                                 Crypto.getUnixTime()
                                         );
-                                        Long time = Helper.createdCleartextMessageArmored(call.argument("message"));
                                         resultJSON.put("msg", msg);
-                                        resultJSON.put("time", time);
                                     }catch (Exception e) {
                                         resultJSON.put("error", "Contact key does not match PGP signed message");
                                         return resultJSON;
@@ -154,6 +154,7 @@ public class MainActivity extends FlutterActivity {
                                         resultJSON.put("time", Crypto.getUnixTime());
 
                                     }catch (Exception e) {
+                                        e.printStackTrace();
                                         resultJSON.put("error", "Cannot create signature");
                                         return resultJSON;
                                     }

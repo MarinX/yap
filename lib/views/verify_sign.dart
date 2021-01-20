@@ -100,17 +100,6 @@ class VerifySignatureState extends State<VerifySignature> {
                           ],
                         ),
                       ),
-                      Card(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            ListTile(
-                              title: Text('Signed at'),
-                              subtitle: Text(sig.datetime.toString()),
-                            ),
-                          ],
-                        ),
-                      ),
                     ],
                   ) :
                   FormBuilder(
