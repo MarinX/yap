@@ -16,11 +16,12 @@ class Contacts extends StatefulWidget {
 
 class ContactsState extends State<Contacts> {
   final UtilsService _utils = new UtilsService();
-  final List<PGP> _contacts = new List<PGP>();
+  List<PGP> _contacts = new List<PGP>();
 
   @override
   void initState() {
     super.initState();
+    _contacts.clear();
     Store.getContacts().then((List<PGP> value) {
       value.forEach((element) {
         setState(() {
@@ -34,6 +35,7 @@ class ContactsState extends State<Contacts> {
     setState(() {
       _contacts.add(contact);
     });
+    Store.syncContacts(_contacts);
   }
 
   void removeContact(PGP contact) {
@@ -51,7 +53,7 @@ class ContactsState extends State<Contacts> {
   @override
   Widget build(BuildContext context) {
     ExpansionTile makeListTile(int _index) {
-      final PGP contact = _contacts.elementAt(_index);
+      PGP contact = _contacts.elementAt(_index);
       return ExpansionTile(
         title: Text(
           _contacts.elementAt(_index).name,
@@ -122,9 +124,7 @@ class ContactsState extends State<Contacts> {
               context,
               MaterialPageRoute(builder: (context) => AddContact()),
             );
-            if (contact != null) {
-              addContact(contact);
-            }
+            addContact(contact);
           },
           child: Icon(Icons.add)),
       body: _contacts.length == 0 ? _emptyState() : Container(

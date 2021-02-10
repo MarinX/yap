@@ -71,7 +71,7 @@ class ImportKeyState extends State<ImportKey> {
                         privKey,
                         _fbKey.currentState.value["password"].toString(),
                       )
-                      .then(Store.addKey).then((value) {
+                      .then((value) {
                     Navigator.pop(context, value);
                   }).catchError((e) {
                     _utils.showSnackbar(builderContext, e.message);

@@ -27,6 +27,7 @@ class EncryptState extends State<Encrypt> {
   bool isLoading = false;
   String result;
   final UtilsService _utils = new UtilsService();
+  bool showWarning = false;
 
   EncryptState(this.contact);
 
@@ -39,6 +40,12 @@ class EncryptState extends State<Encrypt> {
           _keys.add(element);
         });
       });
+
+      // add additional
+     setState(() {
+       _keys.add(PGP(publicKey: "", privateKey: "-1", name: "Don't use my key for signing", email: "⚠"));
+     });
+
     });
   }
 
@@ -66,6 +73,7 @@ class EncryptState extends State<Encrypt> {
               if (_fbKey.currentState.saveAndValidate()) {
                 setState(() {
                   isLoading = true;
+                  showWarning = false;
                 });
                 String privKey = _fbKey
                     .currentState.value["key"]
@@ -74,6 +82,23 @@ class EncryptState extends State<Encrypt> {
                     .currentState.value["message"]
                     .toString();
                 PGP mykey  = _keys.where((element) => element.privateKey == privKey).first;
+
+                if(mykey.privateKey == "-1") {
+                  // use unsigned encryption
+                  _service.encryptUnsigned(message, contact).then((value) {
+                    setState(() {
+                      isLoading = false;
+                      _controller.text = value;
+                    });
+
+                  }).catchError((e){
+                    setState(() {
+                      isLoading = false;
+                    });
+                    _utils.showSnackbar(builderContext, e.message);
+                  });
+                  return;
+                }
 
                 _service.encrypt(message, mykey, contact).then((value) {
                   setState(() {
@@ -118,6 +143,18 @@ class EncryptState extends State<Encrypt> {
                         decoration: InputDecoration(labelText: "My key"),
                         hint: Text('Select Key'),
                         validators: [FormBuilderValidators.required()],
+                        onChanged: (val){
+                          if(val == "-1" && !showWarning) {
+                            setState(() {
+                              showWarning = true;
+                            });
+                          }else if(val != "-1" && showWarning) {
+                            setState(() {
+                              showWarning = false;
+                            });
+                          }
+
+                        },
                         items: _keys
                             .map((key) => DropdownMenuItem(
                             value: key.privateKey,
@@ -141,6 +178,18 @@ class EncryptState extends State<Encrypt> {
                       ),
                     ],
                   ),
+                ),
+                Visibility(
+                  visible: showWarning,
+                    child: Container(
+                      padding: const EdgeInsets.only(top: 35.0),
+                      child: Row(
+                        children: <Widget>[
+                          Flexible(
+                              child: new Text("⚠\nIn most cases, PGP software will fail to decrypt this message as they look for signed message.\nProceed with caution.", textAlign: TextAlign.center,))
+                        ],
+                      ),
+                    )
                 ),
               ]
           );

@@ -61,7 +61,6 @@ class CreateSignatureState extends State<CreateSignature> {
                   String message = _fbKey
                       .currentState.value["message"]
                       .toString();
-
                   _service.signature(_key.privateKey,_key.passphrase, message).then((PGPSig.Signature value) {
                     setState(() {
                       isLoading = false;

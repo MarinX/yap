@@ -63,6 +63,14 @@ public class MainActivity extends FlutterActivity {
 
                                     resultJSON.put("message", pgpMessage);
                                     return resultJSON;
+                                case "EncryptUnsigned":
+                                    String unsignedPGPMessage = Helper.encryptMessageArmored(
+                                            call.argument("pubKey").toString(),
+                                            call.argument("message").toString()
+                                    );
+
+                                    resultJSON.put("message", unsignedPGPMessage);
+                                    return resultJSON;
                                 case "Decrypt":
                                     String message = call.argument("message");
 

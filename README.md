@@ -153,6 +153,11 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+## Donate
+Support this project by donating Monero(XMR)
+```sh
+48KX4E4MRryd5QsVuctroyF1CVHgtGB695BjDxmFTnf1M3r9zpbe86HTyeAJ5TegQAZPahFjitTrVQxUi1WVLjPFLWzvMec
+```
 
 ## License
 

@@ -19,6 +19,12 @@ class PGPService {
     return json["message"];
   }
 
+  Future<String> encryptUnsigned(String msg, PGP contact) async {
+    String result = await ch.invokeMethod("EncryptUnsigned", {"pubKey": contact.publicKey, "message": msg});
+    var json = jsonDecode(result);
+    return json["message"];
+  }
+
   Future<String> decrypt(String msg, PGP key) async {
     String result = await ch.invokeMethod("Decrypt", {"message": msg, "passphrase": key.passphrase, "privateKey": key.privateKey});
     var json = jsonDecode(result);
@@ -35,6 +41,7 @@ class PGPService {
   Future<PGP> import(String privateKey, String password) async {
     String result = await ch.invokeMethod("Import", {"privKey": privateKey.trim(), "passphrase": password});
     PGP ret = PGP.fromJson(jsonDecode(result));
+    ret.passphrase = password;
     return ret;
   }
 

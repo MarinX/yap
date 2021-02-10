@@ -67,7 +67,7 @@ class CreateKeyState extends State<CreateKey> {
                   password,
                   _keyType,
                   _keyLength,
-                ).then(Store.addKey).then((key){
+                ).then((key){
                   Navigator.pop(buildContext, key);
                 }).catchError((err){
                   setState(() {

@@ -16,12 +16,13 @@ class Keys extends StatefulWidget {
 }
 
 class KeysState extends State<Keys> {
-  final List<PGP> _keys = new List<PGP>();
+  List<PGP> _keys = new List<PGP>();
   final UtilsService _utils = new UtilsService();
 
   @override
   void initState() {
     super.initState();
+    _keys.clear();
     Store.getKeys().then((List<PGP> value) {
       value.forEach((element) {
         setState(() {
@@ -35,6 +36,7 @@ class KeysState extends State<Keys> {
     setState(() {
       _keys.add(key);
     });
+    Store.syncKeys(_keys);
   }
 
   void removeKey(PGP key) {

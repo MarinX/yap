@@ -72,7 +72,6 @@ class AddContactState extends State<AddContact> {
                     _fbKey.currentState.value["public_key"]
                         .toString(),
                   )
-                      .then(Store.addContact)
                       .then((value) {
                     Navigator.pop(context, value);
                   }).catchError((e) {
