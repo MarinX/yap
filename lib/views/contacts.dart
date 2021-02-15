@@ -124,7 +124,10 @@ class ContactsState extends State<Contacts> {
               context,
               MaterialPageRoute(builder: (context) => AddContact()),
             );
-            addContact(contact);
+            if(contact != null) {
+              addContact(contact);
+            }
+
           },
           child: Icon(Icons.add)),
       body: _contacts.length == 0 ? _emptyState() : Container(
