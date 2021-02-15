@@ -44,6 +44,7 @@ public class MainActivity extends FlutterActivity {
                                     String passphrase = call.argument("passphrase");
                                     key.lock(passphrase.getBytes());
 
+
                                     resultJSON.put("name", call.argument("name"));
                                     resultJSON.put("email", call.argument("email"));
                                     resultJSON.put("passphrase", call.argument("passphrase"));
@@ -118,11 +119,15 @@ public class MainActivity extends FlutterActivity {
                                             resultJSON.put("error", "Private key locked with password");
                                             return resultJSON;
                                         }
-                                        privateKey = privateKey.unlock(password.getBytes());
+
                                         if(privateKey.isLocked()) {
-                                            resultJSON.put("error", "Invalid password");
-                                            return resultJSON;
+                                            privateKey = privateKey.unlock(password.getBytes());
+                                            if(privateKey.isLocked()) {
+                                                resultJSON.put("error", "Invalid password");
+                                                return resultJSON;
+                                            }
                                         }
+
                                         identity = privateKey.primaryIdentity();
 
                                         resultJSON.put("publicKey", privateKey.getArmoredPublicKey());
