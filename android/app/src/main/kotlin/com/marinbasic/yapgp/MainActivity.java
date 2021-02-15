@@ -42,8 +42,7 @@ public class MainActivity extends FlutterActivity {
                                             keyLength
                                     );
                                     String passphrase = call.argument("passphrase");
-                                    key.lock(passphrase.getBytes());
-
+                                    key = key.lock(passphrase.getBytes());
 
                                     resultJSON.put("name", call.argument("name"));
                                     resultJSON.put("email", call.argument("email"));
