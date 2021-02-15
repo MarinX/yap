@@ -72,7 +72,7 @@ class ExportKeyState extends State<ExportKey> {
             if(_confirmed) IconButton(
               icon: Icon(Icons.content_copy),
               onPressed: () {
-                ClipboardManager.copyToClipBoard(_controller.text);
+                ClipboardManager.copyToClipBoard(_key.privateKey);
                 _utils.showSnackbar(builderContext, "Private key copied to clipboard");
               },
             )
