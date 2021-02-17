@@ -24,13 +24,16 @@ class HomeState extends State<Home> {
 
     _prefs.then((SharedPreferences prefs){
       String isLocked = prefs.getString("pinlock");
+      bool isLight = (prefs.getInt("light_mode") != null);
       if(isLocked != null && isLocked.isNotEmpty) {
         Future.delayed(Duration.zero, (){
           showLockScreen(
               context: context,
               correctString: isLocked,
               canBiometric: true,
-              showBiometricFirst: true,
+              showBiometricFirst: false,
+              backgroundColor: isLight ? Colors.grey.shade50 : Colors.grey.shade900,
+              backgroundColorOpacity: 1,
               biometricAuthenticate: (context) async {
                 final localAuth = LocalAuthentication();
                 final didAuthenticate =
