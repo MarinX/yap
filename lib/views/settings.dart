@@ -162,6 +162,8 @@ class SettingsState extends State<Settings> {
     if(_pinLock.isEmpty) {
       showConfirmPasscode(
         context: context,
+        backgroundColor: Colors.grey.shade900,
+        backgroundColorOpacity: 1,
         confirmTitle: 'Confirm the passcode.',
         onCompleted: (context, verifyCode) {
           setState(() {
